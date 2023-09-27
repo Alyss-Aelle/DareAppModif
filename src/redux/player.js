@@ -39,8 +39,14 @@ export const player = createSlice({
             console.log("vide")
             return initState ;
         } ,
+        nextPlayer:(state, action) =>{
+            console.log('nextplayer',action.payload)
+
+            const nexState = { ...state,  index:action.payload }
+            return nexState ;
+        },
     }
 })
 
-export const {addPlayer, deletePlayer,resetPlayer} = player.actions ; 
+export const {addPlayer, deletePlayer,resetPlayer, nextPlayer} = player.actions ; 
 export default player.reducer;

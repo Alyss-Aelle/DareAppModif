@@ -9,7 +9,7 @@ const ShowTruthOrDare = () => {
   return (
     <View>
       <Text>{players[index].name}</Text>
-      <NextPlayer/>
+      <NextPlayer id={id} />
     </View>
   )
 }

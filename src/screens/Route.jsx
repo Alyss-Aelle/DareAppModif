@@ -7,11 +7,17 @@ import Category from './Category'
 import TruthOrDare from './TruthOrDare'
 import Players from './Players'
 import ShowTruthOrDare from './ShowTruthOrDare'
+import { Modal, PaperProvider } from 'react-native-paper'
+import styles from '../../styles'
+import { useSelector } from 'react-redux'
+import {ActivityIndicator} from 'react-native-paper'
 
 const Stack = createNativeStackNavigator();
 
 const Route = () => {
+  const loading  = useSelector(state =>state.loading)
   return (
+    <PaperProvider>
     <NavigationContainer>
         <Stack.Navigator screenOptions={{headerShown:false}}>
             <Stack.Screen name='Home' component={Home} />
@@ -20,8 +26,11 @@ const Route = () => {
             <Stack.Screen name='TruthOrDare' component={TruthOrDare} />
             <Stack.Screen name='ShowTruthOrDare' component={ShowTruthOrDare} />
         </Stack.Navigator>
-
+        <Modal visible={loading}  contentContainerStyle={styles.modal}>
+          <ActivityIndicator animating={true} size={100} />
+        </Modal>
     </NavigationContainer>
+    </PaperProvider>
   )
 }
 
